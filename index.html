@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estacionamento - Condomínio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Controle de Estacionamento</h1>
+            <p>Gerenciamento de vagas do condomínio</p>
+        </header>
+
+        <nav>
+            <button onclick="App.switchView('cadastro')" id="nav-cadastro" class="active">Cadastrar Reserva</button>
+            <button onclick="App.switchView('listar')" id="nav-listar">Listar Vagas</button>
+            <button onclick="App.switchView('disponiveis')" id="nav-disponiveis">Vagas Disponíveis</button>
+        </nav>
+
+        <!-- TELA 1: CADASTRO DE RESERVA -->
+        <section id="view-cadastro" class="view active">
+            <h2>Cadastro de Reserva de Vaga</h2>
+            <form id="form-reserva" onsubmit="App.handleSave(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="placa">Placa do Veículo:</label>
+                        <input type="text" id="placa" required placeholder="ABC-1234" maxlength="8" style="text-transform: uppercase;">
+                    </div>
+                    <div class="form-group">
+                        <label for="proprietario">Nome do Proprietário:</label>
+                        <input type="text" id="proprietario" required placeholder="Nome completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="apartamento">Número do Apartamento:</label>
+                        <input type="text" id="apartamento" required placeholder="Ex: 102">
+                    </div>
+                    <div class="form-group">
+                        <label for="bloco">Bloco do Apartamento:</label>
+                        <input type="text" id="bloco" required placeholder="Ex: Bloco A">
+                    </div>
+                    <div class="form-group">
+                        <label for="modelo">Modelo do Veículo:</label>
+                        <input type="text" id="modelo" required placeholder="Ex: Onix">
+                    </div>
+                    <div class="form-group">
+                        <label for="cor">Cor do Veículo:</label>
+                        <input type="text" id="cor" required placeholder="Ex: Prata">
+                    </div>
+                    <div class="form-group full">
+                        <label for="vaga">Número da Vaga de Estacionamento (1 a 30):</label>
+                        <input type="number" id="vaga" required placeholder="Ex: 15" min="1" max="30">
+                    </div>
+                    <button type="submit" class="btn-submit">Salvar Reserva</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- TELA 2: LISTAR VAGAS -->
+        <section id="view-listar" class="view">
+            <h2>Vagas Cadastradas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vaga</th>
+                        <th>Placa</th>
+                        <th>Proprietário</th>
+                        <th>Apto/Bloco</th>
+                        <th>Veículo</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-vagas">
+                    <!-- Preenchido via JavaScript -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- TELA 3: VAGAS DISPONÍVEIS -->
+        <section id="view-disponiveis" class="view">
+            <h2>Mapa do Estacionamento</h2>
+            <p style="margin-bottom: 15px; color: #64748b; font-size: 0.95rem;">Visualização aérea das vagas e via de circulação do condomínio.</p>
+            
+            <div id="mapa-estacionamento" class="parking-map">
+                <!-- Gerenciado via JavaScript com as alas e a rua no meio -->
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
